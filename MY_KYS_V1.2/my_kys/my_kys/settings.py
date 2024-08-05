@@ -44,8 +44,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_cleanup',
+    'ckeditor',
+    #'django_recaptcha',
+    'accounts',  # new
 
 ]
+AUTH_USER_MODEL = "accounts.CustomUser"  # new
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,9 +128,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS =  [BASE_DIR / 'static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -136,3 +143,38 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+# CKEditor Settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
+CKEDITOR_CONFIGS = {
+    'default':
+        {
+            'toolbar': 'full',
+            'width': 'auto',
+            'extraPlugins': ','.join([
+                'codesnippet',
+            ]),
+        },
+}
+
+CKEDITOR_CONFIGS = {
+    'default': {
+       # 'toolbar': 'full',
+       # 'height': '100%',
+        'width': '100%',
+    },
+}
+
+#RECAPTCHA_PUBLIC_KEY = '6LeaZx8qAAAAAF_6NGBfFh6K7faPU3P6Xqw451Oh'
+#RECAPTCHA_PRIVATE_KEY = '6LeaZx8qAAAAAMhGHpwyPuRNpZfYdfyeRQXzApWc'
+#NOCAPTCHA = True
+
+
+
+# django_project/settings.py
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"

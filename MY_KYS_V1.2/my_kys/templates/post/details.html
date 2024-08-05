@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+ {% extends "base.html" %}
 
 {% block body %}
 <div class="container">  
@@ -21,6 +21,15 @@
                 </p>
             </div>
         </div>
+        <br><br><br>
+        <h3> Yorum Ekle </h3>
+        {% include "post/comment.html" %}
+        <hr>
+        {% for comment in post.comments.all %}
+            <h4>{{comment.name}} | <small>{{comment.created_date|timesince}} önce</small></h4>
+            <p>{{comment.content | linebreaks}}</p>
+            <hr>
+        {% endfor %}
     </div>
  </div>
 </div>
