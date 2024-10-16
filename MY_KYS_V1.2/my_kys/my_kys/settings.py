@@ -47,9 +47,36 @@ INSTALLED_APPS = [
     'ckeditor',
     #'django_recaptcha',
     'accounts',  # new
+    'allauth',
+    'allauth.account',
+
+    # Optional -- requires install using `django-allauth[socialaccount]`.
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    "allauth.socialaccount.providers.github",  # new for GitHub provider
+  
 
 ]
 AUTH_USER_MODEL = "accounts.CustomUser"  # new
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+   
+    "django.core.context_processors.request",
+  
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+    
+)
+AUTHENTICATION_BACKENDS = (
+  
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+    
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,8 +86,25 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
+SITE_ID = 1  # new
+
+ACCOUNT_EMAIL_VERIFICATION = "none"  # new
+
+LOGIN_REDIRECT_URL = "/"  # new
+
+# new below
+SOCIALACCOUNT_PROVIDERS = {
+    "github": {
+        "APP": {
+            "client_id": "123",
+            "secret": "456",
+        }
+    }
+}
 ROOT_URLCONF = 'my_kys.urls'
 
 TEMPLATES = [
