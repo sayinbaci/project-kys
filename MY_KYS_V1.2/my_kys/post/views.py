@@ -12,8 +12,8 @@ def post_index(request):
     if query:
          post_list = post_list.filter(
               Q(title__icontains=query)|
-              Q(content__contains=query)
-         
+              Q(content__contains=query)|
+              Q(user__username__icontains=query)
               ).distinct()
     paginator = Paginator(post_list, 3)  # creating a paginator object
     # getting the desired page number from url

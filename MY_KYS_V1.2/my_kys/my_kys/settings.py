@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_cleanup',
     'ckeditor',
-    #'django_recaptcha',
+    'django_recaptcha',
     'accounts',  # new
     'allauth',
     'allauth.account',
@@ -213,8 +213,8 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-#RECAPTCHA_PUBLIC_KEY = '6LeaZx8qAAAAAF_6NGBfFh6K7faPU3P6Xqw451Oh'
-#RECAPTCHA_PRIVATE_KEY = '6LeaZx8qAAAAAMhGHpwyPuRNpZfYdfyeRQXzApWc'
+RECAPTCHA_PUBLIC_KEY = '6LeSJ2UqAAAAAC9wE1f5bNH3e_PTsbMPusVvieIq'
+RECAPTCHA_PRIVATE_KEY = '6LeSJ2UqAAAAAELUMiL9fe0SwLAys06WkM-7kZqD'
 #NOCAPTCHA = True
 
 

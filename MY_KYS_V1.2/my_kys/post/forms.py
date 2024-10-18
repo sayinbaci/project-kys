@@ -4,7 +4,7 @@ from django_recaptcha.fields import ReCaptchaField
 
 class PostForm(forms.ModelForm):
 
-    #captcha = ReCaptchaField()
+    captcha = ReCaptchaField()
     
     class Meta:
         model = Post
@@ -16,7 +16,7 @@ class PostForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
 
-    #captcha = ReCaptchaField()
+    captcha = ReCaptchaField()
 
     class Meta:
         model = Comment
