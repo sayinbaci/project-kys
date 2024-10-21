@@ -69,6 +69,10 @@ Gönderi inceleme ekranında giriş yapmış veya ziyaretçi olan tüm kullanıc
 Bu özellikle tüm gönderiler arasından filtreleme yapılabilmektedir.
 ![image](https://github.com/user-attachments/assets/74ff08af-aebc-4693-8b60-f97f1e815459)
 
+### Profil Güncelleme
+Üyelik oluşturmuş olan herkes üyelik bilgilerini Profil Güncelleme sayfasından güncelleyebilir.
+![image](https://github.com/user-attachments/assets/a3ba1ea1-e748-4fb3-8629-a19d57798871)
+
 
 
 
