@@ -10,12 +10,12 @@
                <img src="{{ post.image.url }}" class="img-responsive" >
            {% endif %}
            <div class="caption">
-               <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small>{{ post.publishing_date |timesince}} önce</small></h3>
-               <h4>Yazar: {{ post.user.username }}</h4>
+            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a><span style="font-size: 15px;"> | {{ post.publishing_date|timesince}} önce </span> </h3>
+            <h4><small>Yazar: {{ post.user.username }}</small></h4>
                <p>{{ post.content|safe|linebreaks|truncatechars:150 }}</p>
                <p>
                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary" role="button">İncele</a>
-                   {% if request.user.is_authenticated %}
+                   {% if request.user.username and request.user.username == post.user.username %}
                        <a href="{{ post.get_update_url }}" class="btn btn-secondary" role="button">Güncelle</a>
                        <a href="{{ post.get_delete_url }}" class="btn btn-danger" role="button">Sil</a>
                    {% endif %}
