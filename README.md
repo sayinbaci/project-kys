@@ -50,9 +50,8 @@ Ziyarteçler için görünen Anasayfa
 ### Giriş Yapma Sayfası
 ![image](https://github.com/user-attachments/assets/86e19573-96e5-4bea-811c-4c3596217d93)
 
-Üye olmuş ve giriş yapmış bir kullanıcının göreceği Anasayfa aşağıdaki gibidir. Bu kullanıcı kendi eklediği gönderileri güncelleyebilir ve yeni gönderi ekleyebilir.
-
 ### Anasayfa 2
+Üye olmuş ve giriş yapmış bir kullanıcının göreceği Anasayfa aşağıdaki gibidir. Bu kullanıcı kendi eklediği gönderileri güncelleyebilir ve yeni gönderi ekleyebilir.
 ![image](https://github.com/user-attachments/assets/93d0c809-5ff0-486e-a426-4832efe6ad19)
 
 ![image](https://github.com/user-attachments/assets/fef40f03-94a3-4336-b2b3-dccd3f495f0e)
@@ -62,8 +61,12 @@ Giriş yapmış tüm kullanıcılar yeni gönderi ekleyebilmektedir.
 ![image](https://github.com/user-attachments/assets/d30d9d2d-5f8a-4f90-ba3c-b7dd5c09fba2)
 
 ### Gönderi İnceleme Ekranı
-Gönderi inceleme ekranında giriş yapmış veya ziyaretçi olan tüm kullanıcılargönderiye yorum yapmayetkisine sahiptir.
+Gönderi inceleme ekranında giriş yapmış veya ziyaretçi olan tüm kullanıcılargönderiye yorum yapma yetkisine sahiptir.
 ![image](https://github.com/user-attachments/assets/f70071ed-30ca-4782-8e47-57114ea06ced)
+
+### Gönderi Düzenleme Ekranı
+Bu ekranda giriş yapmış olan kullanıcı kendi gönderisi için düzenleme yetkisine sahiptir.
+![image](https://github.com/user-attachments/assets/da5614ac-db44-47b7-9c72-fe964a808ce2)
 
 ### Filtreleme
 Bu özellikle tüm gönderiler arasından filtreleme yapılabilmektedir.
