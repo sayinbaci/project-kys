@@ -4,6 +4,9 @@ from django.core.validators import RegexValidator
 from django.db import models
 from .managers import CustomUserManager
 from django.utils.translation import gettext as _
+from datetime import date
+
+
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Model alanları
@@ -24,7 +27,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         validators=[
             RegexValidator(regex=r'^\+?1?\d{9,15}$', message='Telefon numarası geçerli bir formatta olmalıdır.')
         ]
-    )   
+    )
+    birth_date = models.DateField(default=date.today, null=True, blank=True)   
+    address = models.TextField(max_length=250, verbose_name='Adres', default='Default Address')
+
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]
@@ -33,3 +39,5 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return  f'TC: {self.identity_number}, Telefon: {self.phone}, E-Posta Adresi: {self.email}'
     
+
+

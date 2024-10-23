@@ -10,11 +10,11 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
     filter_horizontal = ()  # Boş bırakabilirsiniz
     model = CustomUser
-    list_display = ('username', 'email', 'identity_number', 'name', 'surname', 'phone', 'is_staff', 'is_active')
+    list_display = ('username', 'email', 'identity_number', 'name', 'surname','phone', 'is_staff', 'is_active')
     list_filter = ('is_staff', 'is_superuser', 'is_active')
 
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        ('Kişisel Bilgiler', {'fields': ('email', 'password')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
     )
     add_fieldsets = (

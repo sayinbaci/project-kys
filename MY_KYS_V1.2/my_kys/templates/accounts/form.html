@@ -12,9 +12,12 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <input class="btn btn-primary" type="submit" value="{{ title }}">
+
                 </form>
+                
             </div>
         </div>
     </div>
 
 {% endblock %}
+
