@@ -8,18 +8,14 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.views.generic import ListView
 from .forms import CustomUserCreationForm,CustomUserChangeForm,CustomUserProfileForm,CustomUser
-from django.http import HttpRequest, HttpResponse
+from django.http import  HttpResponse
 import datetime
+from .utils import get_city_name  # Yukarıda yazdığımız fonksiyon
 
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "accounts/signup.html"
-
-class UserListView(ListView):
-    model = CustomUser
-    template_name = 'accounts/user_list.html'
-    context_object_name = 'users' 
 
 def LogInView(request):
     form = CustomUserChangeForm(request.POST or None)
@@ -71,10 +67,7 @@ def ProfilUpdateView(request):
 
     return render(request, 'accounts/form.html', {'form': form, 'title': 'Profil Güncelle'})
 
-def UserListView(request):
-    CustomUser = get_user_model()
-    users = CustomUser.objects.all()
-    return render(request, 'accounts/user_list.html', {'users': users})
+
    
 def LogOutView(request):
     logout(request)
@@ -89,10 +82,30 @@ def datetime_form(request):
             date: datetime.date = form.cleaned_data["birth_date"]
             # Do something with that value, such as storing it in a database
             # or displaying it to the user.
-            date_output = date.strftime("%d.%m.%Y")
+            date_output = date.strftime("%Y-%m-%d")
             print(date_output)
             return HttpResponse(f"The submitted date is: {date_output}")
     else:
         form = CustomUserCreationForm()
     ctx = {"form": form}
     return render(request, "accounts/form.html", ctx)
+
+class UserListView(ListView):
+    model = CustomUser
+    template_name = 'accounts/user_list.html'  # Kendi şablon dosyanız
+    context_object_name = 'users'  # Şablonda kullanacağınız değişken adı
+    paginate_by = 10  # Sayfa başına 10 kullanıcı göster
+    ordering = ['username']  # Kullanıcı adıyla sıralama
+    '''def UserListView(request):
+    CustomUser = get_user_model()
+    users = CustomUser.objects.all()
+    return render(request, 'accounts/user_list.html', {'users': users})'''
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Tüm kullanıcılar için şehir adını ekliyoruz
+        for user in context['users']:
+            
+            user.city_name = get_city_name(user.city)  # Şehir ID'sini şehir adına çeviriyoruz
+            print(user.city_name)
+        return context

@@ -4,8 +4,7 @@ from django_recaptcha.fields import ReCaptchaField
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import CustomUser
-
-
+from .utils import load_cities_from_json
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -14,13 +13,14 @@ class CustomUserCreationForm(UserCreationForm):
     birth_date = forms.DateField(
         label="Doğum Tarihi",
         required=False,
-        widget=forms.DateInput(format="%d.%m.%Y", attrs={"type": "date"}),
-        input_formats=["%d.%m.%Y"]
+        widget=forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
+        input_formats=["%Y-%m-%d"]
     )
+    city = forms.ChoiceField(choices=load_cities_from_json(), label="Şehir")  # Şehir listesi
 
     class Meta:
         model = CustomUser
-        fields = ("username", "email","identity_number", "name", "surname", "phone","birth_date","address")
+        fields = ("username", "email","identity_number", "name", "surname", "phone","birth_date","city","address")
       
 
 
@@ -52,7 +52,7 @@ class CustomUserChangeForm(UserChangeForm):
 class CustomUserProfileForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ("username", "email","identity_number", "name", "surname", "phone","birth_date","address")
+        fields = ("username", "email","identity_number", "name", "surname", "phone","birth_date",'city',"address")
 
         
     def clean(self):

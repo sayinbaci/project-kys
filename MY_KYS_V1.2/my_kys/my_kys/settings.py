@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django_recaptcha',
     'accounts',  # new
     'allauth',
-    'allauth.account',
+    
 
     # Optional -- requires install using `django-allauth[socialaccount]`.
     'allauth.socialaccount',

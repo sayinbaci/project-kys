@@ -6,7 +6,11 @@ from .managers import CustomUserManager
 from django.utils.translation import gettext as _
 from datetime import date
 
+class City(models.Model):
+    name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Model alanları
@@ -30,7 +34,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     )
     birth_date = models.DateField(default=date.today, null=True, blank=True)   
     address = models.TextField(max_length=250, verbose_name='Adres', default='Default Address')
-
+    city = models.CharField(max_length=100, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username',]

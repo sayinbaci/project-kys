@@ -18,11 +18,11 @@
         {%if request.user.is_authenticated%}
         <li class="nav-item"><a class="nav-link active" href="{% url 'post:create' %}">Yeni Gönderi</a></li>
         <li class="nav-item"><a class="nav-link active" href="{% url 'accounts:profil' %}">Profil</a></li>
-        {%endif%}
-             
+        <li class="nav-item"><a class="nav-link active" href="{% url 'accounts:users' %}">Kullanıcılar</a></li>
+        {%endif%}       
       {%if not request.user.is_authenticated%}
-      <li class="nav-item"><a  class="nav-link" href="{% url 'accounts:signup' %}">Üye ol</a></li>
-      <li class="nav-item"><a  class="nav-link"  href="{% url 'accounts:login' %}">Giriş Yap</a></li>
+        <li class="nav-item"><a  class="nav-link" href="{% url 'accounts:signup' %}">Üye ol</a></li>
+        <li class="nav-item"><a  class="nav-link"  href="{% url 'accounts:login' %}">Giriş Yap</a></li>
       {%else%}
         <li class="nav-item"><a  class="nav-link" href="{% url 'accounts:logout' %}">Çıkış Yap</a></li>
       {%endif%}
